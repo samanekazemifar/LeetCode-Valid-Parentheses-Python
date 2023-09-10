@@ -1,0 +1,12 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        map = { ")": "(" , "]": "[" , "}": "{"}
+        openings = []
+        for c in s:
+            if c in map.values():
+                openings.append(c)
+            elif openings and map[c] == openings[-1]:
+                openings.pop()
+            else: 
+                return False
+        return openings == []
